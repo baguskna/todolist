@@ -1,0 +1,30 @@
+<div class="signup-form__wrapper">
+  <!-- <app-form></app-form> -->
+  <div class="signup-form__first-tier">
+    <div class="signup-form__logo-wrapper">
+      <img class="signup-form__logo" src="https://www.freelogoservices.com/api/main/images/1j+ojFVDOMkX9Wytexe43D6kifGFpRdHmR7IwXs1M3EMoAJtliArhPVt8fgy" alt="Todolist">
+      <h4>Todolist</h4>
+    </div>
+    <h4 class="signup-form__copy">Signup</h4>
+    <form [formGroup]="signupForm" class="signup-form__second-tier">
+      <div>
+        <mat-form-field appearance="outline">
+          <mat-label>Email</mat-label>
+          <input matInput placeholder="email">
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field appearance="outline">
+          <mat-label>Name</mat-label>
+          <input matInput placeholder="name">
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field appearance="outline">
+          <mat-label>Password</mat-label>
+          <input matInput placeholder="password">
+        </mat-form-field>
+      </div>
+    </form>
+  </div>
+</div>
