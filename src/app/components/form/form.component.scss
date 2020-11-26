@@ -1,0 +1,74 @@
+@import 'src/styles';
+
+.form__wrapper {
+  align-items: center;
+  background-color: $tdl-neutral-300;
+  display: flex;
+  justify-content: center;
+  height: 100vh;
+  padding: 0 20px;
+
+  @media all and (min-width: $bps) {
+    padding: 0 50px;
+  }
+}
+
+
+.form__first-tier {
+  background-color: $tdl-white;
+  border: 1px solid $tdl-neutral-500;
+  border-radius: 8px;
+  max-width: 400px;
+  padding: 40px;
+  width: 90%;
+}
+
+.form__third-tier {
+  display: flex;
+  flex-direction: column;
+}
+
+.form__logo-wrapper {
+  align-items: center;
+  color: $tdl-orange;
+  display: flex;
+  justify-content: center;
+  padding-bottom: 25px;
+}
+
+.form__logo {
+  width: 40px;
+}
+
+.form__copy {
+  font-size: 25px;
+  padding-bottom: 25px;
+  text-transform: capitalize;
+}
+
+.form__input {
+  width: 100%;
+}
+
+.form__btn {
+  background-color: $tdl-red;
+  border: none;
+  border-radius: 6px;
+  color: $tdl-white;
+  cursor: pointer;
+  font-size: 20px;
+  height: 60px;
+  text-transform: capitalize;
+}
+
+.form__to-login {
+  display: flex;
+  justify-content: center;
+  padding-top: 30px;
+}
+
+.form__login-link {
+  color: $tdl-red;
+  cursor: pointer;
+  text-decoration: none;
+}

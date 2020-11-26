@@ -11,7 +11,7 @@ import { NavItem } from 'src/utils/model';
 export class HeaderComponent implements OnInit {
   showTop: boolean = true;
   navList: Array<NavItem>;
-  private URL_HIDDEN_NAV = ['/signup'];
+  private URL_HIDDEN_NAV = ['/signup', '/login'];
 
   constructor(
     private router: Router
