@@ -22,7 +22,7 @@
         <button
           mat-button-raised
           type="submit"
-          class="form__btn">{{ page }}</button>
+          class="form__btn">{{ ctaCopy(page) }}</button>
       </form>
       <div class="form__to-login">
         <p *ngIf="page === 'signup'; else login">Already signed up? <a [routerLink]="['/login']" class="form__login-link">Go to login</a></p>

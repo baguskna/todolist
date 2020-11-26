@@ -12,5 +12,10 @@ export class FormComponent implements OnInit {
 
   ngOnInit(): void {
   }
+  // TODO (bagus): will change data using toWeb
+  ctaCopy(page: string) {
+    const copy = page === 'login' ? page : 'join now';
+    return copy;
+  }
 
 }

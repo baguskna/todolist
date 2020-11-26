@@ -7,6 +7,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./signup.component.scss']
 })
 export class SignupComponent implements OnInit {
+  // TODO (bagus): will be this data from router not harcoded
   page: string = 'signup';
 
   signupForm = new FormGroup({
