@@ -22,27 +22,27 @@ export class AuthService {
 
   signup(formSignUp) {
     return this.http
-      .post<AuthResponse>(
-        `https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=${environment.authAPIKey}`,
-        {
-          email: formSignUp.email,
-          password: formSignUp.password,
-          returnSecureToken: true
+    .post<AuthResponse>(
+      `https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=${environment.authAPIKey}`,
+      {
+        email: formSignUp.email,
+        password: formSignUp.password,
+        returnSecureToken: true
+      }
+    )
+    .pipe(
+      catchError(this.handleError),
+      tap(
+        res => {
+          this.handleAuth(
+            res.email,
+            res.localId,
+            res.idToken,
+            +res.expiresIn
+          )
         }
       )
-      .pipe(
-        catchError(this.handleError),
-        tap(
-          res => {
-            this.handleAuth(
-              res.email,
-              res.localId,
-              res.idToken,
-              +res.expiresIn
-            )
-          }
-        )
-      )
+    )
   }
 
   login(formLogin) {

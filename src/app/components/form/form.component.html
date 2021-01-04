@@ -1,5 +1,6 @@
 <div class="form__wrapper">
-  <div class="form__first-tier">
+  <app-spinner *ngIf="isLoading"></app-spinner>
+  <div class="form__first-tier" *ngIf="!isLoading">
     <div class="form__logo-wrapper">
       <img class="form__logo" src="https://www.freelogoservices.com/api/main/images/1j+ojFVDOMkX9Wytexe43D6kifGFpRdHmR7IwXs1M3EMoAJtliArhPVt8fgy" alt="Todolist">
       <h4>Todolist</h4>
@@ -56,4 +57,5 @@
 <app-alert
   *ngIf="error"
   [message]="error"
-  (close)="onClose()"></app-alert>
+  (close)="onClose()">
+</app-alert>

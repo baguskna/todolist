@@ -12,14 +12,15 @@ import { AuthService } from 'src/app/service/auth.service';
   styleUrls: ['./form.component.scss']
 })
 export class FormComponent implements OnInit {
+  authType: string = '';
+  error: string;
   formAuth = new FormGroup({
     email: new FormControl('', [Validators.required, Validators.email, Validators.minLength(3)]),
     password: new FormControl('', [Validators.required, Validators.minLength(6)])
   });
-  loginMode: boolean = true;
   isFormValid: boolean = false;
-  authType: string = '';
-  error: string;
+  isLoading: boolean = false;
+  loginMode: boolean = true;
 
   constructor(
     private authService: AuthService,
@@ -41,7 +42,7 @@ export class FormComponent implements OnInit {
   }
 
   onSubmit(): void {
-    console.log(this.formAuth.value)
+    this.isLoading = true;
     if (!this.formAuth.valid) {
       return;
     }
@@ -56,10 +57,12 @@ export class FormComponent implements OnInit {
 
     authObs.subscribe(
       res => {
-        console.log(res)
+        this.isLoading = false;
+        this.router.navigateByUrl('/todo');
       },
       err => {
         this.error = err;
+        this.isLoading = false;
       }
     );
   }

@@ -19,6 +19,7 @@ import { HeaderComponent } from 'src/app/components/header/header.component';
 import { LandingComponent } from 'src/app/pages/landing/landing.component';
 import { FormComponent } from 'src/app/components/form/form.component';
 import { AlertComponent } from './components/alert/alert.component';
+import { SpinnerComponent } from './components/spinner/spinner.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { AlertComponent } from './components/alert/alert.component';
     LandingComponent,
     FormComponent,
     AlertComponent,
+    SpinnerComponent,
   ],
   imports: [
     BrowserModule,

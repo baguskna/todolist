@@ -7,22 +7,27 @@ import { FormComponent } from './components/form/form.component';
 
 
 const routes: Routes = [
-{
-  path: '',
-  component: LandingComponent
-},
-{
-  path: 'login',
-  component: FormComponent
-},
-{
-  path: 'home',
-  component: TodoComponent
-},
-{
-  path: 'signup',
-  component: FormComponent
-}];
+  {
+    path: '',
+    component: LandingComponent
+  },
+  {
+    path: 'login',
+    component: FormComponent
+  },
+  {
+    path: 'home',
+    component: TodoComponent
+  },
+  {
+    path: 'signup',
+    component: FormComponent
+  },
+  {
+    path: 'todo',
+    component: TodoComponent
+  }
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
