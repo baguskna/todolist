@@ -5,27 +5,47 @@
       <h4>Todolist</h4>
     </div>
     <div class="form__second-tier">
-      <h4 class="form__copy">{{ page }}</h4>
-      <form class="form__third-tier">
+      <h4 class="form__copy">{{ authType }}</h4>
+      <form class="form__third-tier" [formGroup]="formAuth" (ngSubmit)="onSubmit()">
         <div class="form__email">
           <mat-form-field class="form__input" appearance="outline">
             <mat-label>Email</mat-label>
-            <input matInput placeholder="email">
+            <input
+              matInput
+              type="email"
+              placeholder="Email"
+              formControlName="email"
+              ngDefaultControl
+              autocapitalize="off">
+            <mat-error>Invalid Email</mat-error>
           </mat-form-field>
         </div>
         <div>
           <mat-form-field class="form__input" appearance="outline">
             <mat-label>Password</mat-label>
-            <input matInput placeholder="password">
+            <input
+              matInput
+              type="password"
+              placeholder="Password"
+              formControlName="password"
+              ngDefaultControl>
+            <mat-error>Password requires 6 characters</mat-error>
           </mat-form-field>
         </div>
         <button
           mat-button-raised
           type="submit"
-          class="form__btn">{{ ctaCopy(page) }}</button>
+          class="form__btn"
+          [ngClass]="{
+            'form__btn-invalid': !isFormValid,
+            'form__btn-valid': isFormValid
+          }"
+          [disabled]="!isFormValid">
+          {{loginMode ? 'login' : 'join now'}}
+        </button>
       </form>
       <div class="form__to-login">
-        <p *ngIf="page === 'signup'; else login">Already signed up? <a [routerLink]="['/login']" class="form__login-link">Go to login</a></p>
+        <p *ngIf="!loginMode; else login">Already signed up? <a [routerLink]="['/login']" class="form__login-link">Go to login</a></p>
         <ng-template #login>
           <p>Haven't signed up? <a [routerLink]="['/signup']" class="form__login-link">Go to signup</a></p>
         </ng-template>

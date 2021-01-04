@@ -31,10 +31,11 @@
 .tdl-landing__btn {
   background-color: $tdl-red;
   border-color: $tdl-red;
-  border-radius: 8px;
   color: $tdl-white;
   font-size: 20px;
   padding: 8px 25px;
+
+  @include border-radius(8px);
 }
 
 .tdl-landing__picture-wrapper {

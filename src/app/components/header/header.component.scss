@@ -56,7 +56,12 @@
 
 .tdl-header__nav-link {
   border-bottom: 0;
+  color: $tdl-black;
   font-size: 15px;
   font-weight: $tdl-font-normal;
   text-decoration: none;
+}
+
+.active {
+  border-bottom: 1px solid $tdl-orange;
 }

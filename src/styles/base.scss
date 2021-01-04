@@ -1,4 +1,11 @@
-// Import Var styles
+// Import var
 @import 'var';
-@import 'type';
+
+// Import override style material angular
 @import 'material';
+
+// Import mixin
+@import 'mixin';
+
+// Import global style
+@import 'type';

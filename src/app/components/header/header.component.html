@@ -10,8 +10,15 @@
   </div>
   <nav class="tdl-header__nav-wrapper">
     <ul class="tdl-header__nav-first-tier">
-      <li class="tdl-header__nav" *ngFor="let navItem of navList">
-        <a class="tdl-header__nav-link" (click)="navigateTo(navItem.url)">{{ navItem.text }}</a>
+      <li
+        class="tdl-header__nav"
+        *ngFor="let navItem of navList"
+        routerLinkActive="active">
+        <a
+          class="tdl-header__nav-link"
+          [routerLink]="navItem.url">
+          {{ navItem.text }}
+        </a>
       </li>
     </ul>
   </nav>

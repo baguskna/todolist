@@ -16,11 +16,12 @@
 
 .form__first-tier {
   background-color: $tdl-white;
-  border: 1px solid $tdl-neutral-500;
-  border-radius: 8px;
   max-width: 400px;
   padding: 40px;
   width: 90%;
+
+  @include border(light, $tdl-neutral-500);
+  @include border-radius(8px);
 }
 
 .form__third-tier {
@@ -51,14 +52,29 @@
 }
 
 .form__btn {
-  background-color: $tdl-red;
   border: none;
-  border-radius: 6px;
-  color: $tdl-white;
-  cursor: pointer;
   font-size: 20px;
   height: 60px;
   text-transform: capitalize;
+
+  @include border-radius(6px);
+}
+
+.form__btn-invalid {
+  background-color: $tdl-neutral-500;
+  cursor: not-allowed;
+  pointer-events: all !important;
+}
+
+.form__btn-valid {
+  background-color: $tdl-red;
+  color: $tdl-white;
+  cursor: pointer;
+  transition: all .3s ease 0s;
+
+  &:hover {
+    @include hover-darken(button, $tdl-red);
+  }
 }
 
 .form__to-login {
@@ -71,4 +87,9 @@
   color: $tdl-red;
   cursor: pointer;
   text-decoration: none;
+  transition: all .3s ease 0s;
+
+  &:hover {
+    @include hover-darken(link, $tdl-red);
+  }
 }

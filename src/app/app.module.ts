@@ -10,24 +10,21 @@ import { MatListModule } from '@angular/material/list';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { LoginComponent } from 'src/app/pages/login/login.component';
 import { TodoComponent } from 'src/app/pages/todo/todo.component';
 import { HeaderComponent } from 'src/app/components/header/header.component';
 import { LandingComponent } from 'src/app/pages/landing/landing.component';
-import { SignupComponent } from 'src/app/pages/signup/signup.component';
 import { FormComponent } from 'src/app/components/form/form.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent,
     TodoComponent,
     HeaderComponent,
     LandingComponent,
-    SignupComponent,
     FormComponent,
   ],
   imports: [
@@ -43,7 +40,8 @@ import { FormComponent } from 'src/app/components/form/form.component';
     FormsModule,
     ReactiveFormsModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

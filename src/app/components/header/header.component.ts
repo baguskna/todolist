@@ -16,19 +16,20 @@ export class HeaderComponent implements OnInit {
   constructor(
     private router: Router
   ) {
-    this.router.events.subscribe((event: Event) => {
-      if (event instanceof NavigationStart) {
-        this.showTop = this.URL_HIDDEN_NAV.indexOf(event.url) === -1;
-        console.log(this.showTop)
-      }
-    });
+    // this.router.events.subscribe((event: Event) => {
+    //   if (event instanceof NavigationStart) {
+    //     this.showTop = this.URL_HIDDEN_NAV.indexOf(event.url) === -1;
+    //   }
+    // });
   }
 
   ngOnInit(): void {
-    this.navList = [{
+    this.navList = [
+      {
         text: 'Login',
         url: '/login'
-      }, {
+      },
+      {
         text: 'Signup',
         url: '/signup'
       }
