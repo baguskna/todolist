@@ -19,6 +19,7 @@ export class FormComponent implements OnInit {
   loginMode: boolean = true;
   isFormValid: boolean = false;
   authType: string = '';
+  error: string;
 
   constructor(
     private authService: AuthService,
@@ -58,9 +59,12 @@ export class FormComponent implements OnInit {
         console.log(res)
       },
       err => {
-        console.log(err)
+        this.error = err;
       }
     );
   }
 
+  onClose() {
+    this.error = null;
+  }
 }

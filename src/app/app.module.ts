@@ -18,6 +18,7 @@ import { TodoComponent } from 'src/app/pages/todo/todo.component';
 import { HeaderComponent } from 'src/app/components/header/header.component';
 import { LandingComponent } from 'src/app/pages/landing/landing.component';
 import { FormComponent } from 'src/app/components/form/form.component';
+import { AlertComponent } from './components/alert/alert.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { FormComponent } from 'src/app/components/form/form.component';
     HeaderComponent,
     LandingComponent,
     FormComponent,
+    AlertComponent,
   ],
   imports: [
     BrowserModule,

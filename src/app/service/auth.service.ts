@@ -2,6 +2,7 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, throwError } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
+import { Router } from '@angular/router';
 
 import { AuthResponse } from '../models/auth.model';
 import { User } from '../models/user.model';
@@ -11,10 +12,12 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root'
 })
 export class AuthService {
+  tokenExpirationTimer: any;
   user = new BehaviorSubject<User>({} as User);
 
   constructor(
-    private http: HttpClient
+    private http: HttpClient,
+    private router: Router
   ) { }
 
   signup(formSignUp) {
@@ -67,6 +70,45 @@ export class AuthService {
     )
   }
 
+  logout() {
+    this.user.next(null);
+    this.router.navigateByUrl('/');
+    localStorage.removeItem('userData');
+
+    if (this.tokenExpirationTimer) {
+      clearTimeout(this.tokenExpirationTimer);
+    }
+    this.tokenExpirationTimer = null;
+  }
+
+  autoLogin() {
+    const userData = JSON.parse(localStorage.getItem('userData'));
+    if (!userData) {
+      return;
+    }
+
+    const loadedUser = new User(
+      userData.email,
+      userData.id,
+      userData._token,
+      new Date(userData._tokenExpirationDate)
+    )
+
+    if (loadedUser.token) {
+      this.user.next(loadedUser);
+      const expirationDuration =
+        new Date(userData._tokenExpirationDate).getTime() -
+        new Date().getTime();
+      this.autoLogout(expirationDuration);
+    }
+  }
+
+  autoLogout(expirationDuration: number): void {
+    this.tokenExpirationTimer = setTimeout(() => {
+      this.logout();
+    }, expirationDuration);
+  }
+
   private handleError(err: HttpErrorResponse) {
     let errorMessage = 'An error occurred!';
     if (!err.error || !err.error.error) {
@@ -108,6 +150,6 @@ export class AuthService {
 
     this.user.next(user);
     localStorage.setItem('userData', JSON.stringify(user));
-    // this.autoLogout(+expiresIn * 1000);
+    this.autoLogout(+expiresIn * 1000);
   }
 }

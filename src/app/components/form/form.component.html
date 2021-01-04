@@ -53,3 +53,7 @@
     </div>
   </div>
 </div>
+<app-alert
+  *ngIf="error"
+  [message]="error"
+  (close)="onClose()"></app-alert>
