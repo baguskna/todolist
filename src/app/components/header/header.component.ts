@@ -1,6 +1,8 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { Router, Event, NavigationStart } from '@angular/router';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 
+import { AuthService } from 'src/app/service/auth.service';
 import { NavItem } from 'src/utils/model';
 
 @Component({
@@ -8,20 +10,16 @@ import { NavItem } from 'src/utils/model';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
 })
-export class HeaderComponent implements OnInit {
-  showTop: boolean = true;
+export class HeaderComponent implements OnInit, OnDestroy {
+  isAuthenticated: boolean = false;
   navList: Array<NavItem>;
-  private URL_HIDDEN_NAV = ['/signup', '/login'];
+  showTop: boolean = true;
+  subscription: Subscription;
 
   constructor(
+    private authService: AuthService,
     private router: Router
-  ) {
-    // this.router.events.subscribe((event: Event) => {
-    //   if (event instanceof NavigationStart) {
-    //     this.showTop = this.URL_HIDDEN_NAV.indexOf(event.url) === -1;
-    //   }
-    // });
-  }
+  ) {}
 
   ngOnInit(): void {
     this.navList = [
@@ -34,10 +32,23 @@ export class HeaderComponent implements OnInit {
         url: '/signup'
       }
     ];
+
+    this.subscription = this.authService.user.subscribe(
+      user => {
+        this.isAuthenticated = !!user;
+      }
+    );
   }
 
-  navigateTo(url: string) {
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
+  }
+
+  navigateTo(url: string): void {
     this.router.navigateByUrl(url);
   }
 
+  logout(): void {
+    this.authService.logout();
+  }
 }

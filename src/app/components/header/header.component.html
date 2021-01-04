@@ -9,7 +9,7 @@
     </a>
   </div>
   <nav class="tdl-header__nav-wrapper">
-    <ul class="tdl-header__nav-first-tier">
+    <ul class="tdl-header__nav-first-tier" *ngIf="!isAuthenticated">
       <li
         class="tdl-header__nav"
         *ngFor="let navItem of navList"
@@ -19,6 +19,11 @@
           [routerLink]="navItem.url">
           {{ navItem.text }}
         </a>
+      </li>
+    </ul>
+    <ul class="tdl-header__nav-first-tier" *ngIf="isAuthenticated">
+      <li class="tdl-header__nav">
+        <a class="tdl-header__nav-link" (click)="logout()">Log out</a>
       </li>
     </ul>
   </nav>
