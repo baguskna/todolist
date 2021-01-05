@@ -1,6 +1,6 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, throwError } from 'rxjs';
+import { BehaviorSubject, Observable, throwError } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
 import { Router } from '@angular/router';
 
@@ -13,14 +13,14 @@ import { environment } from 'src/environments/environment';
 })
 export class AuthService {
   tokenExpirationTimer: any;
-  user = new BehaviorSubject<User>({} as User);
+  user = new BehaviorSubject<User>(null);
 
   constructor(
     private http: HttpClient,
     private router: Router
   ) { }
 
-  signup(formSignUp) {
+  signup(formSignUp): Observable<AuthResponse> {
     return this.http
     .post<AuthResponse>(
       `https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=${environment.authAPIKey}`,
@@ -45,7 +45,7 @@ export class AuthService {
     )
   }
 
-  login(formLogin) {
+  login(formLogin): Observable<AuthResponse> {
     return this.http
     .post<AuthResponse>(
       `https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${environment.authAPIKey}`,
@@ -70,7 +70,7 @@ export class AuthService {
     )
   }
 
-  logout() {
+  logout(): void {
     this.user.next(null);
     this.router.navigateByUrl('/');
     localStorage.removeItem('userData');
@@ -81,7 +81,7 @@ export class AuthService {
     this.tokenExpirationTimer = null;
   }
 
-  autoLogin() {
+  autoLogin(): void {
     const userData = JSON.parse(localStorage.getItem('userData'));
     if (!userData) {
       return;
@@ -109,7 +109,9 @@ export class AuthService {
     }, expirationDuration);
   }
 
-  private handleError(err: HttpErrorResponse) {
+  private handleError(
+    err: HttpErrorResponse
+  ): Observable<never> {
     let errorMessage = 'An error occurred!';
     if (!err.error || !err.error.error) {
       return throwError(errorMessage);
@@ -136,7 +138,7 @@ export class AuthService {
     userId: string,
     token: string,
     expiresIn: number
-  ) {
+  ): void {
     const expirationData = new Date(
       new Date().getTime() + +expiresIn * 1000
     );

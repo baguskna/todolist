@@ -1,0 +1,29 @@
+@import 'src/styles';
+
+.todo__wrapper {
+  display: grid;
+  place-items: center;
+}
+
+.todo__form {
+  padding-bottom: 20px;
+}
+
+.todo__content {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.todo__card-wrapper {
+  padding-bottom: 5px;
+}
+
+.todo__card {
+  display: grid;
+  height: 40px;
+  place-items: center;
+
+  @include border(light, $tdl-neutral-500);
+  @include border-radius(2px);
+}

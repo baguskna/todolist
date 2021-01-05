@@ -10,7 +10,7 @@ import { MatListModule } from '@angular/material/list';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -20,6 +20,7 @@ import { LandingComponent } from 'src/app/pages/landing/landing.component';
 import { FormComponent } from 'src/app/components/form/form.component';
 import { AlertComponent } from './components/alert/alert.component';
 import { SpinnerComponent } from './components/spinner/spinner.component';
+import { AuthInterceptorService } from './service/auth-interceptor.service';
 
 @NgModule({
   declarations: [
@@ -47,7 +48,13 @@ import { SpinnerComponent } from './components/spinner/spinner.component';
     MatInputModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptorService,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

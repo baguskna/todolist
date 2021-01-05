@@ -1,1 +1,29 @@
-<p>todo works!</p>
+<div class="todo__wrapper">
+  <div class="todo__first-tier">
+    <div class="todo__form">
+      <form class="todo__form-wrapper" [formGroup]="todoForm" (ngSubmit)="onSubmit()">
+        <div class="todo__form-email">
+          <mat-form-field class="form__input" appearance="legacy">
+            <mat-label>What are you gonna do?</mat-label>
+            <input
+              matInput
+              type="text"
+              placeholder="Insert here..."
+              formControlName="todo"
+              ngDefaultControl>
+            <mat-error>Invalid Input</mat-error>
+          </mat-form-field>
+        </div>
+        <button type="submit">Ok</button>
+      </form>
+    </div>
+    <ul class="todo__content">
+      <li class="todo__card-wrapper" *ngFor="let todo of todos">
+        <div class="todo__card">
+          <p>{{ todo.title }}</p>
+          <p>{{ todo.isComplete ? 'Sorted out' : 'Not sorted out' }}</p>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>

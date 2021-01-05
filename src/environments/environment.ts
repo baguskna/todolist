@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  authAPIKey: 'AIzaSyCBweF2KtdOLMeO9eSNCgplVAm-hWMGAQQ'
+  authAPIKey: 'AIzaSyCBweF2KtdOLMeO9eSNCgplVAm-hWMGAQQ',
+  todoAPI: 'https://todolist-c5799-default-rtdb.firebaseio.com/todo.json'
 };
 
 /*

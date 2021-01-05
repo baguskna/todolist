@@ -67,7 +67,7 @@ export class FormComponent implements OnInit {
     );
   }
 
-  onClose() {
+  onClose(): void {
     this.error = null;
   }
 }

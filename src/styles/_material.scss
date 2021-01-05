@@ -9,3 +9,15 @@
 .mat-form-field-outline-thick {
   color: $tdl-orange !important;
 }
+
+.mat-focused .mat-form-field-label {
+  color: $tdl-orange !important;
+ }
+
+.mat-form-field-underline {
+  background-color: $tdl-orange !important;
+}
+
+.mat-form-field-ripple {
+ background-color: $tdl-orange !important;;
+}
