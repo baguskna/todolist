@@ -23,7 +23,7 @@ export class AuthService {
   signup(formSignUp): Observable<AuthResponse> {
     return this.http
     .post<AuthResponse>(
-      `https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=${environment.authAPIKey}`,
+      `${environment.authAPI}signUp?${environment.authAPIKey}`,
       {
         email: formSignUp.email,
         password: formSignUp.password,
@@ -48,7 +48,7 @@ export class AuthService {
   login(formLogin): Observable<AuthResponse> {
     return this.http
     .post<AuthResponse>(
-      `https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${environment.authAPIKey}`,
+      `${environment.authAPI}signInWithPassword?${environment.authAPIKey}`,
       {
         email: formLogin.email,
         password: formLogin.password,

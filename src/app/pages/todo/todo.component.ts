@@ -24,13 +24,13 @@ export class TodoComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.todoService.getTodos().subscribe(
       (todos: Array<Todo>) => {
-        this.todos = todos;
+        this.pushTodo(todos);
       }
     );
 
     this.subscription = this.todoService.todoChanges.subscribe(
       (todos: Array<Todo>) => {
-        this.todos = todos;
+        this.pushTodo(todos);
       }
     );
   }
@@ -41,15 +41,23 @@ export class TodoComponent implements OnInit, OnDestroy {
 
   onSubmit(): void {
     const todo = this.todoForm.value.todo;
-    this.todoService.addTodo(todo)
-    .subscribe(
-      todo => {
-        console.log(todo)
-      },
-      err => {
-        console.log(err)
-      }
-    )
+    if (todo === "" || todo === null) {
+      console.log('can\'t be empty ')
+    } else {
+      this.todoService.addTodo(todo)
+      .subscribe(
+        todo => {
+          console.log(todo)
+        },
+        err => {
+          console.log(err)
+        }
+      )
+    }
     this.todoForm.reset();
+  }
+
+  private pushTodo(todos: Array<Todo>): Array<Todo> {
+    return this.todos = todos.reverse();
   }
 }

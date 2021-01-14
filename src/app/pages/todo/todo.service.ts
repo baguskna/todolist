@@ -42,7 +42,7 @@ export class TodoService {
     );
   }
 
-  getTodos() {
+  getTodos(): Observable<Array<Todo>> {
     return this.http
     .get<{ [key: string]: Todo }>(environment.todoAPI)
     .pipe(
