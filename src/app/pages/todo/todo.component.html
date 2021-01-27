@@ -14,15 +14,25 @@
             <mat-error>Can not be empty</mat-error>
           </mat-form-field>
         </div>
-        <button type="submit">Ok</button>
+        <button type="submit" class="todo_btn">
+          <i class="material-icons">add</i>
+        </button>
       </form>
     </div>
     <ul class="todo__content">
       <li class="todo__card-wrapper" *ngFor="let todo of todos">
-        <div class="todo__card">
-          <p>{{ todo.title }}</p>
-          <p>{{ todo.isComplete ? 'Sorted out' : 'Not sorted out' }}</p>
+        <div
+          class="todo__card"
+          [ngClass]="{ completed: todo.isComplete }">
+          {{ todo.title }}
+          <!-- <p>{{ todo.isComplete ? 'Sorted out' : 'Not sorted out' }}</p> -->
         </div>
+        <button type="button" class="todo_btn-check">
+          <i class="material-icons">check</i>
+        </button>
+        <button type="button" class="todo_btn-delete">
+          <i class="material-icons">delete</i>
+        </button>
       </li>
     </ul>
   </div>

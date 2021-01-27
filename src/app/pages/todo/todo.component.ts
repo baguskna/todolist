@@ -30,6 +30,7 @@ export class TodoComponent implements OnInit, OnDestroy {
 
     this.subscription = this.todoService.todoChanges.subscribe(
       (todos: Array<Todo>) => {
+        console.log(todos)
         this.pushTodo(todos);
       }
     );
@@ -58,6 +59,6 @@ export class TodoComponent implements OnInit, OnDestroy {
   }
 
   private pushTodo(todos: Array<Todo>): Array<Todo> {
-    return this.todos = todos.reverse();
+    return this.todos = todos;
   }
 }
