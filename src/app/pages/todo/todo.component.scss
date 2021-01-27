@@ -1,0 +1,68 @@
+@import 'src/styles';
+
+.todo__wrapper {
+  display: grid;
+  place-items: center;
+}
+
+.todo__form {
+  padding-bottom: 20px;
+}
+
+.todo__content {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.todo__card-wrapper {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  padding-bottom: 5px;
+}
+
+.todo__card {
+  align-items: center;
+  display: flex;
+  flex: 1;
+  height: 40px;
+  padding-left: 5px;
+  transition: .4s;
+
+  @include border(light, $tdl-neutral-500);
+}
+
+.todo__form-wrapper {
+  display: flex;
+  flex-direction: row;
+}
+
+.todo_btn {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  outline: none;
+  padding: 10px;
+
+  i {
+    color: $tdl-orange;
+  }
+}
+
+.todo_btn-check {
+  background: rgb(73, 204, 73);
+  border: none;
+  color: $tdl-white;
+}
+
+.todo_btn-delete {
+  background: $tdl-orange-700;
+  border: none;
+  color: $tdl-white;
+}
+
+.completed {
+  opacity: .5;
+  text-decoration: line-through;
+}

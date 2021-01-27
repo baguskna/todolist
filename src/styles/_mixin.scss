@@ -1,0 +1,33 @@
+@mixin border-radius($radius) {
+  -webkit-border-radius: $radius;
+  -moz-border-radius: $radius;
+  -ms-border-radius: $radius;
+  border-radius: $radius;
+}
+
+@mixin border($type, $color) {
+  @if $type == light {
+    border: 1px solid $color;
+  }
+  @else if $type == medium {
+    border: 3px solid $color;
+  }
+  @else if $type == heavy {
+    border: 6px solid $color;
+  }
+  @else {
+    border: none;
+  }
+}
+
+@mixin hover-darken($type, $color) {
+  @if $type == button {
+    background-color: darken($color, 5%);
+  }
+  @else if $type == link {
+    color: darken($color, 10%);
+  }
+  @else {
+    color: inherit;
+  }
+}

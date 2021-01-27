@@ -1,0 +1,67 @@
+@import 'src/styles';
+
+.tdl-header__wrapper {
+  align-items: center;
+  background-color: $tdl-white;
+  display: flex;
+  justify-content: space-between;
+  left: 0;
+  padding: 0 20px;
+  position: sticky;
+  right: 0;
+  top: 0;
+  width: 100%;
+  z-index: 100;
+
+  @media all and (min-width: $bps) {
+    padding: 0 50px;
+  }
+}
+
+.tdl-header__nav-logo {
+  align-items: center;
+  display: flex;
+}
+
+.tdl-header__logo {
+  width: 40px;
+}
+
+.tdl-header__logo-wrapper {
+  color: $tdl-orange;
+  cursor: pointer;
+}
+
+.tdl-header__nav-wrapper {
+  list-style: none;
+  text-align: right;
+}
+
+.tdl-header__nav-first-tier {
+  display: flex;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.tdl-header__nav {
+  cursor: pointer;
+  padding: 0 10px;
+
+  &:hover,
+  &:focus {
+    color: $tdl-orange;
+  }
+}
+
+.tdl-header__nav-link {
+  border-bottom: 0;
+  color: $tdl-black;
+  font-size: 15px;
+  font-weight: $tdl-font-normal;
+  text-decoration: none;
+}
+
+.active {
+  border-bottom: 1px solid $tdl-orange;
+}

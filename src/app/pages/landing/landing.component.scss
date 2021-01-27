@@ -1,0 +1,65 @@
+@import 'src/styles';
+
+.tdl-landing__wrapper {
+  padding: $padding-app-mobile;
+
+  @media all and (min-width: $bps) {
+    padding: $padding-app-desktop;
+  }
+}
+
+.tdl-landing__get-started {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  height: 25vh;
+  justify-content: center;
+  padding-top: 60px;
+  position: relative;
+  text-align: center;
+  z-index: 3;
+}
+
+.tdl-landing__heading {
+  max-width: 600px;
+}
+
+.tdl-landing__btn-wrapper {
+  padding-top: 40px;
+}
+
+.tdl-landing__btn {
+  background-color: $tdl-red;
+  border-color: $tdl-red;
+  color: $tdl-white;
+  cursor: pointer;
+  font-size: 20px;
+  padding: 8px 25px;
+
+  @include border-radius(8px);
+}
+
+.tdl-landing__picture-wrapper {
+  display: flex;
+  justify-content: center;
+  z-index: -2;
+  margin-top: 50px;
+
+  @media all and (min-width: $bps) {
+    margin-top: 0;
+  }
+
+  @media all and (min-width: $bpm) {
+    margin-top: -150px;
+  }
+}
+
+.tdl-landing__picture {
+  max-width: none;
+  width: 100%;
+
+  @media all and (min-width: $bps) {
+    max-width: 1256px;
+    width: 90%;
+  }
+}

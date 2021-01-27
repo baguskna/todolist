@@ -1,0 +1,30 @@
+<mat-toolbar
+  #headerContainer
+  class="tdl-header__wrapper"
+  *ngIf="showTop">
+  <div class="tdl-header__logo-wrapper">
+    <a class="tdl-header__nav-logo" (click)="navigateTo('/')">
+      <!-- <img class="tdl-header__logo" src="https://www.freelogoservices.com/api/main/images/1j+ojFVDOMkX9Wytexe43D6kifGFpRdHmR7IwXs1M3EMoAJtliArhPVt8fgy" alt="Logo Todolist"> -->
+      <h4>Todolist</h4>
+    </a>
+  </div>
+  <nav class="tdl-header__nav-wrapper">
+    <ul class="tdl-header__nav-first-tier" *ngIf="!isAuthenticated">
+      <li
+        class="tdl-header__nav"
+        *ngFor="let navItem of navList"
+        routerLinkActive="active">
+        <a
+          class="tdl-header__nav-link"
+          [routerLink]="navItem.url">
+          {{ navItem.text }}
+        </a>
+      </li>
+    </ul>
+    <ul class="tdl-header__nav-first-tier" *ngIf="isAuthenticated">
+      <li class="tdl-header__nav">
+        <a class="tdl-header__nav-link" (click)="logout()">Log out</a>
+      </li>
+    </ul>
+  </nav>
+</mat-toolbar>

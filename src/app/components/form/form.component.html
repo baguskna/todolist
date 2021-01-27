@@ -1,0 +1,61 @@
+<div class="form__wrapper">
+  <app-spinner *ngIf="isLoading"></app-spinner>
+  <div class="form__first-tier" *ngIf="!isLoading">
+    <div class="form__logo-wrapper">
+      <!-- <img class="form__logo" src="https://www.freelogoservices.com/api/main/images/1j+ojFVDOMkX9Wytexe43D6kifGFpRdHmR7IwXs1M3EMoAJtliArhPVt8fgy" alt="Todolist"> -->
+      <h4>Todolist</h4>
+    </div>
+    <div class="form__second-tier">
+      <h4 class="form__copy">{{ authType }}</h4>
+      <form class="form__third-tier" [formGroup]="formAuth" (ngSubmit)="onSubmit()">
+        <div class="form__email">
+          <mat-form-field class="form__input" appearance="outline">
+            <mat-label>Email</mat-label>
+            <input
+              matInput
+              type="email"
+              placeholder="Email"
+              formControlName="email"
+              ngDefaultControl
+              autocapitalize="off">
+            <mat-error>Invalid Email</mat-error>
+          </mat-form-field>
+        </div>
+        <div>
+          <mat-form-field class="form__input" appearance="outline">
+            <mat-label>Password</mat-label>
+            <input
+              matInput
+              type="password"
+              placeholder="Password"
+              formControlName="password"
+              ngDefaultControl>
+            <mat-error>Password requires 6 characters</mat-error>
+          </mat-form-field>
+        </div>
+        <button
+          mat-button-raised
+          type="submit"
+          class="form__btn"
+          [ngClass]="{
+            'form__btn-invalid': !isFormValid,
+            'form__btn-valid': isFormValid
+          }"
+          [disabled]="!isFormValid">
+          {{loginMode ? 'login' : 'join now'}}
+        </button>
+      </form>
+      <div class="form__to-login">
+        <p *ngIf="!loginMode; else login">Already signed up? <a [routerLink]="['/login']" class="form__login-link">Go to login</a></p>
+        <ng-template #login>
+          <p>Haven't signed up? <a [routerLink]="['/signup']" class="form__login-link">Go to signup</a></p>
+        </ng-template>
+      </div>
+    </div>
+  </div>
+</div>
+<app-alert
+  *ngIf="error"
+  [message]="error"
+  (close)="onClose()">
+</app-alert>

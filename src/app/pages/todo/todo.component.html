@@ -1,0 +1,39 @@
+<div class="todo__wrapper">
+  <div class="todo__first-tier">
+    <div class="todo__form">
+      <form class="todo__form-wrapper" [formGroup]="todoForm" (ngSubmit)="onSubmit()">
+        <div class="todo__form-email">
+          <mat-form-field class="form__input" appearance="legacy">
+            <mat-label>What are you gonna do?</mat-label>
+            <input
+              matInput
+              type="text"
+              placeholder="Insert here..."
+              formControlName="todo"
+              ngDefaultControl>
+            <mat-error>Can not be empty</mat-error>
+          </mat-form-field>
+        </div>
+        <button type="submit" class="todo_btn">
+          <i class="material-icons">add</i>
+        </button>
+      </form>
+    </div>
+    <ul class="todo__content">
+      <li class="todo__card-wrapper" *ngFor="let todo of todos">
+        <div
+          class="todo__card"
+          [ngClass]="{ completed: todo.isComplete }">
+          {{ todo.title }}
+          <!-- <p>{{ todo.isComplete ? 'Sorted out' : 'Not sorted out' }}</p> -->
+        </div>
+        <button type="button" class="todo_btn-check">
+          <i class="material-icons">check</i>
+        </button>
+        <button type="button" class="todo_btn-delete">
+          <i class="material-icons">delete</i>
+        </button>
+      </li>
+    </ul>
+  </div>
+</div>
